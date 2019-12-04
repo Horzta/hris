@@ -1,0 +1,11 @@
+FROM python:3.8
+
+
+RUN mkdir -p /usr/src/api
+COPY ./requirements.txt /usr/src/api
+
+WORKDIR /usr/src/api
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN ls
+CMD [ "/bin/ls", "." ]
