@@ -16,6 +16,6 @@ services:
       context: ./api
       dockerfile: DockerFile
     volumes:
-      - ./api:/usr/src/api/
+      - /c/Users/seedra1975/web-projects/hris/api:/usr/src/api
     ports:
       - 5000:5000
