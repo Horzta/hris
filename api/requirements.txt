@@ -1,2 +1,5 @@
 flask
+flask_graphql
 sqlalchemy
+dependency_injector
+graphene>=2.0

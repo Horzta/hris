@@ -6,8 +6,9 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=hris-db
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=hris-db
     ports:
       - 3306:3306
 
@@ -19,3 +20,17 @@ services:
       - /c/Users/seedra1975/web-projects/hris/api:/usr/src/api
     ports:
       - 5000:5000
+  hris-web:
+    build:
+      context: ./web
+      dockerfile: DockerFile
+    ports:
+      - "3000:3000"
+    volumes:
+      - /c/Users/seedra1975/web-projects/hris/web:/usr/src/web
+    # links:
+    #   - web-api
+    # depends_on:
+    #   - web-api
+    environment:
+      - CHOKIDAR_USEPOLLING=true
