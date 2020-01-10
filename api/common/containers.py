@@ -4,4 +4,3 @@ from database.databaseconnection import DatabaseConnection
 
 class Databases(DeclarativeContainer):
     default_conn = Singleton(DatabaseConnection)
-

@@ -1,34 +1,34 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relation
+from common.containers import Databases
 
-Model = declarative_base(name='Model')
+Base = Databases.default_conn().base
 
 
-
-class Account(Model):
+class Account(Base):
     __tablename__ = 'account'
 
-    id = Column('id', Integer, primary_key=true)
+    id = Column('id', Integer, primary_key=True)
     name = Column('name', String(255))
-    phone_number = Column('phone', String(45))
+    phone_number = Column('phone_number', String(45))
 
 
 
-class User(Model):
+class User(Base):
     __tablename__ = 'user'
 
-    id = Column('id', Integer, primary_key=true)
+    id = Column('id', Integer, primary_key=True)
     username = Column('username', String(16))
     email = Column('email', String(32))
     password = Column('password', String(32))
 
 
 
-class Employee(Model):
+class Employee(Base):
     __tablename__ = 'employee'
 
-    id = Column('id', Integer, primary_key=true)
+    id = Column('id', Integer, primary_key=True)
     first_name = Column('first_name', String(100))
     middle_name = Column('middle_name', String(100))
     last_name = Column('last_name', String(100))

@@ -1,13 +1,10 @@
-from graphene import ObjectType, String, Schema
+from graphene import ObjectType, Field, relay
+from graph.viewer import Viewer
 
 class Query(ObjectType):
-    hello = String()
-    goodbye = String()
+    node = relay.Node.Field()
+    viewer = Field(Viewer)
 
-    def resolve_hello(self, info):
-        return "Hello World"
-
-
-
-    def resolve_goodbye(self, info):
-        return "Bye bye!"
+    @staticmethod
+    def resolve_viewer(root, info):
+        return Viewer()
